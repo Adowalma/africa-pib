@@ -5,10 +5,11 @@ import { Pagination } from '../../shared/components/pagination/pagination';
 import { Iso3ToIso2Pipe } from '../../shared/pipes/iso3-to-iso2-pipe';
 import { CommonModule } from '@angular/common';
 import { ListTable } from './list-table/list-table';
+import { Kpi } from './kpi/kpi';
 
 @Component({
   selector: 'app-countries',
-  imports: [Title, Pagination, Iso3ToIso2Pipe, CommonModule, ListTable],
+  imports: [Title, Pagination, Iso3ToIso2Pipe, CommonModule, ListTable, Kpi],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })

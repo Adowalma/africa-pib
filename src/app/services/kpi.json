@@ -2,12 +2,12 @@
   "KPI": [
     {
       "KPI": "PIB Total Africa 2023",
-      "Valor": "$2765.1 Mil Milhoes USD",
+      "Valor": "$2765.1B USD",
       "Nota_Explicativa": "Soma do PIB de 30 paises africanos em 2023"
     },
     {
       "KPI": "PIB Total Africa 2000",
-      "Valor": "$704.8 Mil Milhoes USD",
+      "Valor": "$704.8B USD",
       "Nota_Explicativa": "Soma do PIB dos mesmos 30 paises no ano 2000"
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "KPI": "Angola - PIB 2023",
-      "Valor": "$84.7 Mil Milhoes USD",
+      "Valor": "$84.7B USD",
       "Nota_Explicativa": "Tudo o que Angola produziu e vendeu em 2023, em dolares americanos"
     },
     {
