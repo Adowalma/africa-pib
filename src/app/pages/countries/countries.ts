@@ -3,15 +3,18 @@ import { paises } from '../../services/country.json';
 import { Title } from '../../shared/components/title/title';
 import { Pagination } from '../../shared/components/pagination/pagination';
 import { Iso3ToIso2Pipe } from '../../shared/pipes/iso3-to-iso2-pipe';
+import { CommonModule } from '@angular/common';
+import { ListTable } from './list-table/list-table';
 
 @Component({
   selector: 'app-countries',
-  imports: [Title, Pagination, Iso3ToIso2Pipe],
+  imports: [Title, Pagination, Iso3ToIso2Pipe, CommonModule, ListTable],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })
 export class Countries {
   countriesData = signal(paises);
+  showList = signal(false);
 
   years = [
     '2000',
@@ -59,10 +62,13 @@ export class Countries {
 
   totalPages = computed(() => Math.ceil(this.selectedYearData().length / this.pageSize));
 
-  paginatedData = computed(() => {
-    const start = (this.page() - 1) * this.pageSize;
-    const end = start + this.pageSize;
+  start: number = 0;
+  end: number = 0;
 
-    return this.selectedYearData().slice(start, end);
+  paginatedData = computed(() => {
+    this.start = (this.page() - 1) * this.pageSize;
+    this.end = this.start + this.pageSize;
+
+    return this.selectedYearData().slice(this.start, this.end);
   });
 }

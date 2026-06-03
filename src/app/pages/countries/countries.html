@@ -89,18 +89,24 @@
         </h4>
         <div
           class="flex gap-2 bg-surface-container-low dark:bg-zinc-900 p-1 rounded-lg border border-transparent dark:border-zinc-800 transition-colors duration-300">
-          <button
-            class="p-2 bg-white dark:bg-zinc-800 shadow-sm rounded-md text-primary dark:text-zinc-100 border border-transparent dark:border-zinc-700 transition-all active:scale-95">
+          <button (click)="showList.set(false)"
+            class="p-2 rounded-md text-on-surface-variant dark:text-zinc-400 hover:bg-surface-container-high dark:hover:bg-zinc-800/50 transition-all active:scale-95 border border-transparent"
+            [ngClass]="{'bg-white  dark:bg-zinc-800  text-primary dark:text-zinc-100  shadow-sm dark:border-zinc-700 ': !showList()}">
             <span class="material-symbols-outlined text-[20px] block">grid_view</span>
           </button>
 
-          <button
-            class="p-2 rounded-md text-on-surface-variant dark:text-zinc-400 hover:bg-surface-container-high dark:hover:bg-zinc-800/50 transition-all active:scale-95">
+          <button (click)="showList.set(true)" [class.bg-white]="showList()"
+            class="p-2 rounded-md text-on-surface-variant dark:text-zinc-400 hover:bg-surface-container-high dark:hover:bg-zinc-800/50 transition-all active:scale-95 border border-transparent"
+            [ngClass]="{'bg-white  dark:bg-zinc-800  text-primary dark:text-zinc-100  shadow-sm  dark:border-zinc-700 ': showList()}">
             <span class="material-symbols-outlined text-[20px] block">list</span>
           </button>
         </div>
       </div>
+      @if(showList()){
+      <app-list-table [listTable]="paginatedData()"></app-list-table>
+      }
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 transition-colors duration-300">
+        @if(!showList()) {
         @for (item of paginatedData(); track $index) {
         <div
           class="bg-white dark:bg-zinc-900 rounded-xl border border-outline-variant/20 dark:border-zinc-800 p-5 kpi-card group hover:shadow-md dark:hover:border-zinc-700 transition-all">
@@ -145,9 +151,17 @@
 
         </div>
         }
+        }
+
 
         <div class="col-span-12 md:col-span-2">
+          @if(showList()){
+          <app-pagination [extendedStyle]="true" [totalPage]="totalPages()" [page]="page()"
+            (pageChange)="page.set($event)" [end]="end" [start]="start + 1"></app-pagination>
+          }@else{
           <app-pagination [page]="page()" [totalPage]="totalPages()" (pageChange)="page.set($event)"></app-pagination>
+          }
+
         </div>
       </div>
       <div class="bg-white dark:bg-zinc-800 rounded-xl border border-outline-variant/20 dark:border-zinc-700/50 p-6">

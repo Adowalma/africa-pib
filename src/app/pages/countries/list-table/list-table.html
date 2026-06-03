@@ -1,0 +1,55 @@
+<div
+  class="overflow-x-auto custom-scrollbar bg-surface-container-lowest dark:bg-zinc-900 rounded-xl shadow-sm border border-outline-variant/40 dark:border-zinc-800 overflow-hidden border-b-0 rounded-b-none">
+  <table class="w-full text-left">
+    <thead>
+      <tr
+        class="bg-surface-container-lowest dark:bg-zinc-900/50 border-b border-outline-variant/10 dark:border-zinc-700">
+        <th>
+        </th>
+        <th
+          class="px-card-padding py-4 text-[11px] text-on-surface-variant/70 dark:text-zinc-400 uppercase tracking-widest font-black">
+          País</th>
+
+
+        <th
+          class="px-card-padding py-4 text-[11px] text-on-surface-variant/70 dark:text-zinc-400 uppercase tracking-widest font-black text-right">
+          PIB Nominal(%)</th>
+        <th
+          class="px-card-padding py-4 text-[11px] text-on-surface-variant/70 dark:text-zinc-400 uppercase tracking-widest font-black text-right">
+          Crescimento acumulado (%)</th>
+        <th
+          class="px-card-padding py-4 text-[11px] text-on-surface-variant/70 dark:text-zinc-400 uppercase tracking-widest font-black">
+          População Total</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-outline-variant/5 dark:divide-zinc-700/50">
+      @for (item of listTable(); track $index) {
+      <tr class="hover:bg-surface-container-low dark:hover:bg-zinc-700/50 cursor-pointer transition-colors">
+
+        <td class="px-4"><img [alt]="'Bandeira de '+ item.country"
+            class="w-8 h-5 rounded-sm object-cover border border-zinc-200/50 dark:border-zinc-800"
+            [src]="`https://flagcdn.com/${(item.code | iso3ToIso2).toLowerCase()}.svg`" /></td>
+        <td class="px-card-padding py-4">
+          <div class="flex items-center gap-3">
+            <div>
+              <div class="font-bold text-on-surface dark:text-zinc-100">{{item.country}}</div>
+              <div
+                class="text-[10px] text-on-surface-variant/60 dark:text-zinc-400/80 font-black uppercase tracking-tighter">
+                {{item.code}}, {{item.capital}}</div>
+            </div>
+          </div>
+        </td>
+
+
+        <td class="px-card-padding py-4 text-right font-bold text-on-surface dark:text-zinc-100 tabular-nums">
+          {{item.pib}}%</td>
+        <td class="px-card-padding py-4 text-right font-bold text-on-surface dark:text-zinc-100 tabular-nums">
+          {{item.pibGrow}}%</td>
+        <td class="px-card-padding py-4 text-on-surface-variant dark:text-zinc-400 text-[13px]">
+          {{item.pibHabitant}} Milhões
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
