@@ -2,10 +2,11 @@ import { Component, computed, signal } from '@angular/core';
 import { paises } from '../../services/country.json';
 import { Title } from '../../shared/components/title/title';
 import { Pagination } from '../../shared/components/pagination/pagination';
+import { Iso3ToIso2Pipe } from '../../shared/pipes/iso3-to-iso2-pipe';
 
 @Component({
   selector: 'app-countries',
-  imports: [Title, Pagination],
+  imports: [Title, Pagination, Iso3ToIso2Pipe],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })

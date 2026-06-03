@@ -109,7 +109,7 @@
             <div class="flex items-center gap-3">
               <img [alt]="'Bandeira de '+ item.country"
                 class="w-8 h-5 rounded-sm object-cover border border-zinc-200/50 dark:border-zinc-800"
-                [src]="'https://flagcdn.com/'+ item.code.toLowerCase().substring(0,2) +'.svg'" />
+                [src]="`https://flagcdn.com/${(item.code | iso3ToIso2).toLowerCase()}.svg`" />
               <span class="font-bold text-on-surface dark:text-zinc-100">{{item.country}}</span>
             </div>
             <button
